@@ -85,7 +85,7 @@ class _LoginPage extends State<LoginPage> {
                   height: 52,
                   child: RaisedButton(
                     onPressed: (){
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(context, '/home',);
                     },
                     child: Text(
                       "Log In",

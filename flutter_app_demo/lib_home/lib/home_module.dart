@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'view/home_page.dart';
-class LoginModule extends ChildModule {
+class HomeModule extends ChildModule {
   @override
   // TODO: implement binds
   List<Bind> get binds => [
@@ -8,7 +8,7 @@ class LoginModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-    Router("/", child: (_, args) => HomePage()),
+    Router("/", child: (_, args) => HomePage(), transition: TransitionType.downToUp),
   ];
-  static Inject get to => Inject<LoginModule>.of();
+  static Inject get to => Inject<HomeModule>.of();
 }

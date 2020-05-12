@@ -26,6 +26,8 @@ dependencies:
     path: ./lib_login
   lib_home:
     path: ./lib_home
+  lib_feedback:
+    path: ./lib_feedback
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
@@ -45,6 +47,18 @@ flutter:
   uses-material-design: true
   assets:
     - assets/login/logo_login.jpg
+    - assets/home/app_bar_home.jpg
+    - assets/home/report.png
+    - assets/home/document.png
+    - assets/home/map.png
+    - assets/home/user_management.png
+    - assets/home/tma_pia2.jpg
+    - assets/home/tma_pia1.jpeg
+    - assets/home/tma_pia3.jpeg
+    - assets/home/tma_pia4.jpeg
+    - assets/home/feedback.jpeg
+    - assets/home/update.png
+    - assets/home/upload_file.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
