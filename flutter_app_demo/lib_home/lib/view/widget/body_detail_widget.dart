@@ -184,7 +184,7 @@ class BodyDetailWidget {
                           IconButton(
                             icon: Image.asset(Contanst.FEEDBACK),
                             onPressed: () {
-                                Navigator.pushNamed(context, '/');
+                                Navigator.pushNamed(context, '/feedback');
                             },
                           ),
                           Text("Feedback")
