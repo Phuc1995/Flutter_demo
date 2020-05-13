@@ -1,0 +1,4 @@
+align child center in column: 
+	+ crossAxisAlignment: CrossAxisAlignment.center,
+set width and height for container:
+	+ constraints: BoxConstraints.expand(),
