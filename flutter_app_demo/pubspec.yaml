@@ -59,6 +59,10 @@ flutter:
     - assets/home/feedback.jpeg
     - assets/home/update.png
     - assets/home/upload_file.png
+    - assets/login/register/email_register.png
+    - assets/login/register/password_register.png
+    - assets/login/register/phone_register.png
+    - assets/login/register/user_register.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
