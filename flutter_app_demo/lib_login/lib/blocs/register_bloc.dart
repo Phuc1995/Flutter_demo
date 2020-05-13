@@ -1,13 +1,14 @@
 import 'dart:async';
+import 'package:lib_login/blocs/bloc.dart';
 import 'package:lib_login/fire_base/fire_base_auth.dart';
 
-class RegisterBloc {
+class RegisterBloc implements Bloc {
   var _firAuth = FirAuth();
 
-  StreamController _nameController = new StreamController();
-  StreamController _emailController = new StreamController();
-  StreamController _passController = new StreamController();
-  StreamController _phoneController = new StreamController();
+  StreamController _nameController = new StreamController<String>.broadcast();
+  StreamController _emailController = new StreamController<String>.broadcast();
+  StreamController _passController = new StreamController<String>.broadcast();
+  StreamController _phoneController = new StreamController<String>.broadcast();
 
   Stream get nameStream => _nameController.stream;
   Stream get emailStream => _emailController.stream;
@@ -60,6 +61,7 @@ class RegisterBloc {
     _firAuth.signIn(email, pass, onSuccess, onRegisterError);
   }
 
+  @override
   void dispose() {
     _nameController.close();
     _emailController.close();

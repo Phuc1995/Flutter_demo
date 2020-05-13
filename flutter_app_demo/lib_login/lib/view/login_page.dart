@@ -20,16 +20,24 @@ class _LoginPage extends State<LoginPage> {
   TextEditingController _passController = new TextEditingController();
 
   @override
+  void dispose() {
+    registerBloc.dispose();
+    bloc.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        // set width and height for container
         constraints: BoxConstraints.expand(),
         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
                 height: 100,
@@ -39,18 +47,21 @@ class _LoginPage extends State<LoginPage> {
                 height: 200,
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 40, 0, 6),
+                padding: const EdgeInsets.only(top: 50),
                 child: Text(
-                  'welcomeBack',
-                  style: TextStyle(fontSize: 22),
+                  'Welcome Back',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
-              Text(
-                'Login to continue using app',
-                style: TextStyle(fontSize: 16),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  'Login to continue using app',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
               Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(top: 50),
                   child: StreamBuilder(
                     stream: bloc.userStream,
                     builder: (context, snapshot) => TextField(
@@ -90,10 +101,10 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               Container(
-                constraints: BoxConstraints.loose(Size(double.infinity, 40)),
+                constraints: BoxConstraints.loose(Size(double.infinity, 50)),
                 alignment: AlignmentDirectional.center,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  padding: const EdgeInsets.only(top: 10),
                   child: Text(
                     "Forgot password?",
                     style: TextStyle(fontSize: 16, color: Colors.blue),
@@ -120,25 +131,20 @@ class _LoginPage extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                padding: const EdgeInsets.only(top: 5),
                 child: RichText(
                   key: Key("signUpLink"),
-                  text: TextSpan(
-                      text: "New user? ",
-                      style: TextStyle(color: Color(0xff606470), fontSize: 16),
-                      children: <TextSpan>[
-                        TextSpan(
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.pushNamed(
-                                  context,
-                                  '/register',
-                                );
-                              },
-                            text: "Sign up for a new account",
-                            style: TextStyle(
-                                color: Color(0xff3277D8), fontSize: 16))
-                      ]),
+                  text:  TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushNamed(
+                            context,
+                            '/register',
+                          );
+                        },
+                      text: "New user?Sign up for a new account",
+                      style: TextStyle(
+                          color: Color(0xff3277D8), fontSize: 16)),
                 ),
               ),
             ],

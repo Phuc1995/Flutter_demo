@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'package:lib_login/blocs/bloc.dart';
 import 'package:lib_login/vadidators/validations.dart';
-class LoginBloc{
+class LoginBloc extends Bloc{
   StreamController _userController = new StreamController();
   StreamController _passController = new StreamController();
 
@@ -23,8 +24,11 @@ class LoginBloc{
     return true;
   }
 
-  void dispose(){
+  @override
+  void dispose() {
     _userController.close();
     _passController.close();
   }
+
+
 }

@@ -46,7 +46,6 @@ class BodyDetailWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     color: Colors.black12),
-                height: 85,
                 width: width,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,10 +81,6 @@ class BodyDetailWidget {
                             padding: const EdgeInsets.only(left: 2),
                             child: Text("User"),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text("Management"),
-                          )
                         ],
                       ),
                     ),

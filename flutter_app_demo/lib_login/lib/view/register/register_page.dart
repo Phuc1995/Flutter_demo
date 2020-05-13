@@ -148,11 +148,11 @@ class _RegisterPageState extends State<RegisterPage> {
                             '/',
                           );
                         },
-                      text: "Already a User? ",
-                      style: TextStyle(color: Color(0xff606470), fontSize: 16),
+                      text: "Already a User? Login now",
+                      style: TextStyle(color: Color(0xff3277D8), fontSize: 16),
                       children: <TextSpan>[
                         TextSpan(
-                            text: "Login now",
+                            text: "",
                             style: TextStyle(
                                 color: Color(0xff3277D8), fontSize: 16))
                       ]),
