@@ -13,16 +13,17 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final registerBloc = Modular.get<RegisterBloc>();
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final registerWidgetPage = new RegisterWidgetPage();
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _phoneController = new TextEditingController();
-
+  void showInSnackBar(String value) {
+    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value)));
+  }
   @override
   void dispose() {
-    registerBloc.dispose();
     super.dispose();
   }
 
@@ -120,13 +121,17 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.all(Radius.circular(6)))),
                 ),
               ),
-              Padding(
+              Builder(builder: (context) => Padding(
                 padding: const EdgeInsets.fromLTRB(0, 30, 0, 40),
                 child: SizedBox(
                   width: double.infinity,
                   height: 52,
                   child: RaisedButton(
-                    onPressed: _onSignUpClicked,
+                    onPressed: (){
+
+                      onSignUpClicked(context);
+
+                    },
                     child: Text(
                       "Signup",
                       style: TextStyle(color: Colors.white, fontSize: 18),
@@ -136,7 +141,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         borderRadius: BorderRadius.all(Radius.circular(6))),
                   ),
                 ),
-              ),
+              ),),
+
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                 child: RichText(
@@ -165,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  _onSignUpClicked() {
+  void onSignUpClicked(BuildContext con) {
     var isValidRegister = registerBloc.isValidRegister(
         name: _nameController.text,
         email: _emailController.text,
@@ -183,11 +189,11 @@ class _RegisterPageState extends State<RegisterPage> {
           onSuccess: () {
             RegisterWidgetPage.hideLoadingDialog(context);
             Navigator.pushNamed(context, "/");
+            MsgDialog.showMsgDialog(context, "Sign Up Success", "Login to using app");
           },
           onRegisterError: (msg) {
             RegisterWidgetPage.hideLoadingDialog(context);
             MsgDialog.showMsgDialog(context, "Sign Up Error", msg);
-            registerBloc.dispose();
           });
     }
   }

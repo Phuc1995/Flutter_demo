@@ -16,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPage extends State<LoginPage> {
   final registerBloc = Modular.get<RegisterBloc>();
   LoginBloc bloc = new LoginBloc();
+  final snack = "";
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
 
@@ -26,6 +27,11 @@ class _LoginPage extends State<LoginPage> {
     super.dispose();
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,14 +117,14 @@ class _LoginPage extends State<LoginPage> {
                   ),
                 ),
               ),
-              Padding(
+              Builder(builder: (context) => Padding(
                 padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                 child: SizedBox(
                   width: double.infinity,
                   height: 52,
                   child: RaisedButton(
                     onPressed: () {
-                      onSignInClicked();
+                      onSignInClicked(context);
                     },
                     child: Text(
                       "Log In",
@@ -129,7 +135,7 @@ class _LoginPage extends State<LoginPage> {
                         borderRadius: BorderRadius.all(Radius.circular(6))),
                   ),
                 ),
-              ),
+              ),),
               Padding(
                 padding: const EdgeInsets.only(top: 5),
                 child: RichText(
@@ -154,7 +160,7 @@ class _LoginPage extends State<LoginPage> {
     );
   }
 
-  void onSignInClicked() {
+  void onSignInClicked(BuildContext con) {
     RegisterWidgetPage.showLoadingDialog(context, "Loading ....");
     registerBloc.signIn(
         email: _userController.text,
@@ -162,6 +168,7 @@ class _LoginPage extends State<LoginPage> {
         onSuccess: () {
           RegisterWidgetPage.hideLoadingDialog(context);
           Navigator.pushNamed(context, "/home");
+
         },
         onRegisterError: (msg) {
           RegisterWidgetPage.hideLoadingDialog(context);
