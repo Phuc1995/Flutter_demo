@@ -168,7 +168,6 @@ class _LoginPage extends State<LoginPage> {
         onSuccess: () {
           RegisterWidgetPage.hideLoadingDialog(context);
           Navigator.pushNamed(context, "/home");
-
         },
         onRegisterError: (msg) {
           RegisterWidgetPage.hideLoadingDialog(context);
