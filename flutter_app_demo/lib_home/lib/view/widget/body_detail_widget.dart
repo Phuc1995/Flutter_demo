@@ -108,6 +108,7 @@ class BodyDetailWidget {
                           IconButton(
                             icon: Image.asset(Contanst.MAP),
                             onPressed: () {
+                              Navigator.pushNamed(context, "/map");
                             },
                           ),
                           Text("Map")
