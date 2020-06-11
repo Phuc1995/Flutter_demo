@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lib_map/model/place_item_res.dart';
+import 'package:lib_map/presenter/map_presenter.dart';
 import 'package:lib_map/view/widget/map_menu.dart';
+import 'package:lib_map/view/widget/marker_show_detail.dart';
 import 'package:lib_map/view/widget/ride_picker.dart';
 
 class MapPage extends StatefulWidget {
@@ -12,12 +14,14 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  final mapWidget = new MarkerDetail();
+  final mapPresenter = MapPresenter();
   Completer<GoogleMapController> _controller = Completer();
 
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   static final CameraPosition _location = CameraPosition(
-    target: LatLng(10.856072, 106.630955),
+    target: LatLng(10.797547, 106.669682),
     zoom: 14.4746,
   );
 
@@ -41,6 +45,15 @@ class _MapPageState extends State<MapPage> {
               initialCameraPosition: _location,
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
+              },
+              markers: {
+                markerFution("TeaMilk1", 10.796175, 106.667201, "Tà Tưa Rian"),
+                markerFution("TeaMilk2", 10.795227, 106.669841, "Tà Tưa A-Z"),
+                markerFution(
+                    "TeaMilk3", 10.793446, 106.670130, "Tà Tưa Đài Loan"),
+                markerFution("TeaMilk4", 10.799392, 106.671576, "Tà Tưa Omija"),
+                markerFution("TeaMilk5", 40.738380, -73.988426, "Tà Tưa Rian"),
+                markerFution("TMA", 10.797772, 106.669168, "TMA Lab 3","lab3"),
               },
             ),
             Positioned(
@@ -70,7 +83,8 @@ class _MapPageState extends State<MapPage> {
                   )
                 ],
               ),
-            )
+            ),
+            mapWidget.buildContaniner(mapPresenter, _controller),
           ],
         ),
       ),
@@ -85,6 +99,19 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
+
+  Marker markerFution(
+      String markerId, double lat, double long, String infoWindow,
+      [String locationDefault]) {
+    return Marker(
+        markerId: MarkerId("$markerId"),
+        position: LatLng(lat, long),
+        infoWindow: InfoWindow(title: "$infoWindow"),
+        icon: locationDefault != null ? BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueRed) : BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueViolet)
+    );
+  }
 
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
