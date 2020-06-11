@@ -18,6 +18,4 @@ class FeedbackModule extends ChildModule{
     Router("/", child: (_, args,) => FeedbackPage()),
     Router("/complete", child: (_, args) => FeedbackComplete()),
   ];
-
-
 }

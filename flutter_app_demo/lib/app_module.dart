@@ -4,6 +4,7 @@ import 'package:lib_feedback/feedback_module.dart';
 import 'package:lib_login/login_module.dart';
 import 'package:lib_home/home_module.dart';
 import 'package:lib_map/map_module.dart';
+import 'package:lib_chat/chat_module.dart';
 import 'app_widget.dart';
 
 class AppModule extends MainModule {
@@ -19,6 +20,7 @@ class AppModule extends MainModule {
     Router("/home", module: HomeModule()),
     Router("/feedback", module: FeedbackModule()),
     Router("/map", module: MapModule()),
+    Router("/chat", module: ChatModule()),
   ];
 
 // add your main widget here
