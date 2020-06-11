@@ -99,7 +99,10 @@ class HomePage extends StatelessWidget {
         onTap: (int index) {
           if (index == 0) {
           } else if (index == 1) {
-          } else if (index == 2) {}
+            Navigator.pushNamed(context, Contanst.CAMERA_MODULE);
+          } else if (index == 2) {
+            Navigator.pushNamed(context, Contanst.CHAT_MODULE);
+          }
         },
         type: BottomNavigationBarType.fixed,
         backgroundColor: Color.fromRGBO(0, 0, 0, 0.23),

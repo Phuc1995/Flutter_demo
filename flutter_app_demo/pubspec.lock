@@ -240,6 +240,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.1+1"
+  lib_chat:
+    dependency: "direct main"
+    description:
+      path: lib_chat
+      relative: true
+    source: path
+    version: "1.0.0+1"
   lib_feedback:
     dependency: "direct main"
     description:

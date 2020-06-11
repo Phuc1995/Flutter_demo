@@ -12,4 +12,7 @@ class Contanst{
     static const String UPLOAD_FILE = "assets/home/upload_file.png";
     static const String FEEDBACK = "assets/home/feedback.jpeg";
 
+    static const String CAMERA_MODULE = "/camera";
+    static const String CHAT_MODULE = "/chat";
+
 }
